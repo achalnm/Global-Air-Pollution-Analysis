@@ -11,7 +11,7 @@ The focus is on three major pollutants:
 
 The goal is to identify national and regional *pollution signatures* and understand how each pollutant contributes to overall air quality worldwide.
 
-This work has been completed as part of **Semester 1, MSc Data Visualization & Management** project.
+This project was carried out for Semester 1 of the MSc in Computing (Data Analytics) course Data Visualization & Management by Achal Nanjundamurthy (achalnm02@gmail.com) and Rupam Misra (rupammisra2222@gmail.com)
 
 ---
 

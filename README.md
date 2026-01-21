@@ -1,6 +1,6 @@
-# 🌍 Analyzing Global Air Pollution by Key Pollutants 📊
+# Analyzing Global Air Pollution by Key Pollutants 
 
-## 📌 Overview
+## Overview
 
 This project investigates global air pollution across multiple countries by merging, cleaning, and analyzing three large-scale datasets.  
 The focus is on three major pollutants:
@@ -15,7 +15,7 @@ This work has been completed as part of **Semester 1, MSc Data Visualization & M
 
 ---
 
-## 📂 Datasets
+## Datasets
 
 The repository contains all the datasets used in this project along with the report:
 
@@ -27,7 +27,7 @@ All datasets have been uploaded to this repository as CSV files.
 
 ---
 
-## 🛠️ Technical Workflow
+## Technical Workflow
 
 The analysis followed a structured **8-step data engineering pipeline**:
 
@@ -42,7 +42,7 @@ The analysis followed a structured **8-step data engineering pipeline**:
 
 ---
 
-## 📈 Key Findings
+## Key Findings
 
 - **Regional Extremes:** South Asian and Middle Eastern countries face the highest pollution levels, with Pakistan reaching ~430 µg/m³  
 - **Pollutant Dominance:** Particulate matter (PM2.5 and PM10) contributes 70%–90% of total pollution in highly affected regions  
@@ -53,7 +53,7 @@ The analysis followed a structured **8-step data engineering pipeline**:
 
 ---
 
-## 🚀 Interactive Visualization
+## Interactive Visualization
 
 The final output is an **interactive horizontal stacked bar chart** built using Plotly:
 
@@ -65,7 +65,7 @@ A screenshot of the chart is included as `visual.png` in this repository:
 
 ---
 
-## 🧰 Tools & Libraries
+## Tools & Libraries
 
 - **Language:** Python  
 - **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Plotly  
@@ -73,7 +73,7 @@ A screenshot of the chart is included as `visual.png` in this repository:
 
 ---
 
-## 📁 Repository Contents
+## Repository Contents
 
 This repository contains:
 
@@ -81,4 +81,3 @@ This repository contains:
 - The **Jupyter Notebook** containing the full code  
 - The **project report** in PDF format  
 - **visual.png** — screenshot of the interactive Plotly chart  
-- `.gitignore` for Python environment clean-up

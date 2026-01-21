@@ -19,9 +19,9 @@ This project was carried out for Semester 1 of the MSc in Computing (Data Analyt
 
 The repository contains all the datasets used in this project along with the report:
 
-- **Dataset 1:** Global Air Pollution Dataset (~23,000 rows) — CO, NO₂, PM2.5 readings  
-- **Dataset 2:** Global Air Quality Dataset (~10,000 rows) — Includes PM10 and climate variables  
-- **Dataset 3:** WHO Air Quality Database (~32,000 rows) — Used for validation and correction  
+- **Dataset 1:** Global Air Pollution Dataset (~23,000 rows) - CO, NO₂, PM2.5 readings  
+- **Dataset 2:** Global Air Quality Dataset (~10,000 rows) - Includes PM10 and climate variables  
+- **Dataset 3:** WHO Air Quality Database (~32,000 rows) - Used for validation and correction  
 
 All datasets have been uploaded to this repository as CSV files.
 
@@ -80,4 +80,4 @@ This repository contains:
 - All **dataset CSV files** used in the analysis  
 - The **Jupyter Notebook** containing the full code  
 - The **project report** in PDF format  
-- **visual.png** — screenshot of the interactive Plotly chart  
+- **visual.png** - screenshot of the interactive Plotly chart  

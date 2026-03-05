@@ -57,7 +57,7 @@ The analysis followed a structured **8-step data engineering pipeline**:
 
 The final output is an **interactive horizontal stacked bar chart** built using Plotly:
 
-- **Design:** Monochromatic blue palette for particulate matter with a contrasting axis for the Total Pollution Index  
+- **Design:** Monochromatic attractive blue palette for particulate matter with a contrasting axis for the Total Pollution Index.
 - **Interactivity:** Hover tooltips for absolute values and dynamic sorting buttons to reorder top 20 countries by specific pollutants  
 
 A screenshot of the chart is included as `visual.png` in this repository:  

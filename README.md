@@ -69,7 +69,7 @@ A screenshot of the chart is included as `visual.png` in this repository:
 
 - **Language:** Python  
 - **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Plotly  
-- **Environment:** Jupyter Notebook / Google Colab  
+- **Environment:** Jupyter Notebook   
 
 ---
 

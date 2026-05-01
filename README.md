@@ -45,7 +45,7 @@ The analysis followed a structured **8-step data engineering pipeline**:
 
 ## Key Findings
 
-- **Regional Extremes:** South Asian and Middle Eastern countries face the highest pollution levels, with Pakistan reaching ~430 µg/m³  
+- **Regional Extremes:** South Asian and Middle Eastern countries face highest pollution levels, with Pakistan reaching ~430 µg/m³  
 - **Pollutant Dominance:** Particulate matter (PM2.5 and PM10) contributes 70%–90% of total pollution in highly affected regions  
 - **Pollutant Profiles:**  
   - PM10 dominates in dusty/industrial regions  

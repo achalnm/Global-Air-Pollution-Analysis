@@ -1,84 +1,82 @@
-# Analyzing Global Air Pollution by Key Pollutants 
+# Analyzing Global Air Pollution by Key Pollutants
+
+Coursework project for the Data Visualisation and Management module, Semester 1, MSc in Computing (Data Analytics).
+Team: **Achal Nanjundamurthy** and **Rupam Misra**.
 
 ## Overview
 
-This project investigates global air pollution across multiple countries by merging, cleaning, and analyzing three large-scale datasets.  
+Three publicly available air pollution datasets (65,000+ records, 185 countries) were merged, cleaned,
+and analyzed to compare national pollution levels and identify which pollutants dominate in different
+regions. The output is an interactive Plotly chart showing PM2.5, PM10, and NO2 composition for the
+20 most polluted countries.
 
-The focus is on three major pollutants:
-
-- **PM2.5**
-- **PM10**
-- **NO₂**
-
-The goal is to identify national and regional *pollution signatures* and understand how each pollutant contributes to overall air quality worldwide.
-
-This project was carried out for Semester 1 of the MSc in Computing (Data Analytics) course Data Visualization & Management by Achal Nanjundamurthy (achalnm02@gmail.com) and Rupam Misra (rupammisra2222@gmail.com)
-
----
+CO is present in two of the source datasets but was excluded at the feature-selection stage. Dataset 3
+(the WHO source) does not include CO, so a consistent three-source comparison was not possible. The
+analysis focuses on the three pollutants that appear consistently across all sources and are linked to
+chronic exposure: PM2.5, PM10, and NO2.
 
 ## Datasets
 
-The repository contains all the datasets used in this project along with the report:
+All three CSV files are included in the `Datasets/` folder.
 
-- **Dataset 1:** Global Air Pollution Dataset (~23,000 rows) - CO, NO₂, PM2.5 readings  
-- **Dataset 2:** Global Air Quality Dataset (~10,000 rows) - Includes PM10 and climate variables  
-- **Dataset 3:** WHO Air Quality Database (~32,000 rows) - Used for validation and correction  
+| File | Rows | Pollutants in source | Source |
+| --- | --- | --- | --- |
+| `23k global air pollution dataset.csv` | 23,463 | CO, NO2, PM2.5 (as AQI values) | [Kaggle - hasibalmuzdadid](https://www.kaggle.com/datasets/hasibalmuzdadid/global-air-pollution-dataset) |
+| `10k global_air_quality_data_10000.csv` | 10,000 | PM2.5, PM10, NO2, SO2, CO (in µg/m³) | [Kaggle - waqi786](https://www.kaggle.com/datasets/waqi786/global-air-quality-dataset) |
+| `32k who_aap_2021_v9_11august2022.csv` | 32,191 | PM2.5, PM10, NO2 (in µg/m³) | [WHO Air Quality Database 2022](https://www.who.int/data/gho/data/themes/air-pollution/who-air-quality-database/2022) |
 
-All datasets have been uploaded to this repository as CSV files.
+The largest file is ~4 MB (WHO dataset). All three are small enough to include in the repository.
 
----
+## What the Notebook Does
 
-## Technical Workflow
-
-The analysis followed a structured **8-step data engineering pipeline**:
-
-1. **Loading & Inspection:** Imported 60,000+ records and assessed data structures  
-2. **Standardization:** Converted AQI values into real concentration units (µg/m³) using EPA formulas  
-3. **Feature Selection:** Filtered essential location and pollutant fields for consistency  
-4. **Imputation:** Handled missing values using country-level mean imputation  
-5. **Aggregation:** Summarized pollutant levels to determine national trends  
-6. **Merging:** Performed outer joins to create a unified global dataset of 185 countries  
-7. **Final Cleaning:** Averaged values across datasets and applied global mean fallbacks for gaps  
-8. **Scoring:** Calculated a **Total Pollution Score** and percentage contributions for each pollutant  
-
----
+1. **Load** - Read all three CSVs and inspect shapes and column names.
+2. **Standardize** - Rename columns to a common format. Convert Dataset 1 AQI values to real
+   concentration units (µg/m³) using EPA breakpoint formulas.
+3. **Select features** - Keep country, city, and the relevant pollutant columns from each dataset.
+   CO is dropped here.
+4. **Impute** - Fill missing values using country-level means.
+5. **Aggregate** - Reduce each dataset to one row per country by averaging.
+6. **Merge** - Outer-join all three aggregated datasets on country name, producing a single
+   185-country table.
+7. **Clean** - Average overlapping pollutant columns across datasets. Treat zeros as missing.
+   Apply a global mean fallback for remaining gaps.
+8. **Score** - Sum PM2.5 + PM10 + NO2 per country to get a total pollution figure, then compute
+   each pollutant's percentage share.
+9. **Explore** - Correlation heatmap, histograms with KDE curves, and boxplots on a log scale.
+10. **Visualize** - Interactive horizontal stacked bar chart of the top 20 most polluted countries.
 
 ## Key Findings
 
-- **Regional Extremes:** South Asian and Middle Eastern countries face highest pollution levels, with Pakistan reaching ~430 µg/m³  
-- **Pollutant Dominance:** Particulate matter (PM2.5 and PM10) contributes 70%–90% of total pollution in highly affected regions  
-- **Pollutant Profiles:**  
-  - PM10 dominates in dusty/industrial regions  
-  - PM2.5 dominates in urbanized nations  
-  - NO₂ dominates in areas with high traffic intensity  
+- Pakistan has the highest combined total at ~431 µg/m³, with PM10 accounting for 77% of that.
+- PM10 is the dominant pollutant (68-83% of total) in dust-heavy regions: Pakistan, Uganda,
+  Mongolia, Iraq, Ghana, and Qatar.
+- PM2.5 is the main contributor in industrialized nations. Republic of Korea has the highest
+  PM2.5 share at 67%.
+- NO2 is notable in traffic-heavy countries. UAE, UK, USA, and South Korea each show NO2 at
+  roughly 22% of total pollution.
+- Across all 185 countries, PM10 averages 62% of total pollution, PM2.5 averages 28%, and
+  NO2 averages 10%.
 
----
+## Visualization
 
-## Interactive Visualization
+The final chart is an interactive horizontal stacked bar chart built with Plotly. Bars show the
+percentage composition of PM10, PM2.5, and NO2 per country. An orange dashed line on a secondary
+axis shows total pollution in µg/m³. Sort buttons let you reorder the top 20 countries by total or
+by any individual pollutant.
 
-The final output is an **interactive horizontal stacked bar chart** built using Plotly:
+![Global Air Pollution Chart](visual.png)
 
-- **Design:** Monochromatic attractive blue palette for particulate matter with a contrasting axis for the Total Pollution Index.
-- **Interactivity:** Hover tooltips for absolute values and dynamic sorting buttons to reorder top 20 countries by specific pollutants  
+## Tech Stack
 
-A screenshot of the chart is included as `visual.png` in this repository:  
-![Pollution Chart](visual.png)
-
----
-
-## Tools & Libraries
-
-- **Language:** Python  
-- **Libraries:** Pandas, NumPy, Matplotlib, Seaborn, Plotly  
-- **Environment:** Jupyter Notebook   
-
----
+- Python 3
+- Pandas, NumPy (data wrangling and aggregation)
+- Matplotlib, Seaborn (exploratory charts)
+- Plotly (interactive final visualization)
+- Jupyter Notebook
 
 ## Repository Contents
 
-This repository contains:
-
-- All **dataset CSV files** used in the analysis  
-- The **Jupyter Notebook** containing the full code  
-- The **project report** in PDF format  
-- **visual.png** - screenshot of the interactive Plotly chart  
+- `Datasets/` - three source CSV files (~6.5 MB total)
+- `Analyzing Global Air Pollution by Key Pollutants.ipynb` - full analysis notebook
+- `REPORT - Analyzing Global Air Pollution by Key Pollutants.pdf` - written project report
+- `visual.png` - screenshot of the final interactive chart
